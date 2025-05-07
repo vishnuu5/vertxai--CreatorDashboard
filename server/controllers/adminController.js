@@ -3,9 +3,7 @@ const CreditTransaction = require("../models/CreditTransaction");
 const Report = require("../models/Report");
 const Post = require("../models/Post");
 
-// @desc    Get admin dashboard stats
 // @route   GET /api/admin/stats
-// @access  Private/Admin
 exports.getAdminStats = async (req, res) => {
   try {
     // Check if user is admin
@@ -33,9 +31,7 @@ exports.getAdminStats = async (req, res) => {
   }
 };
 
-// @desc    Get all users
 // @route   GET /api/admin/users
-// @access  Private/Admin
 exports.getUsers = async (req, res) => {
   try {
     // Check if user is admin
@@ -52,9 +48,7 @@ exports.getUsers = async (req, res) => {
   }
 };
 
-// @desc    Update user credits
 // @route   POST /api/admin/credits
-// @access  Private/Admin
 exports.updateUserCredits = async (req, res) => {
   try {
     const { userId, amount, reason } = req.body;
@@ -112,9 +106,7 @@ exports.updateUserCredits = async (req, res) => {
   }
 };
 
-// @desc    Get reported content
 // @route   GET /api/admin/reports
-// @access  Private/Admin
 exports.getReportedContent = async (req, res) => {
   try {
     // Check if user is admin
@@ -134,9 +126,7 @@ exports.getReportedContent = async (req, res) => {
   }
 };
 
-// @desc    Resolve a report
 // @route   PUT /api/admin/reports/:id/resolve
-// @access  Private/Admin
 exports.resolveReport = async (req, res) => {
   try {
     const { id } = req.params;
