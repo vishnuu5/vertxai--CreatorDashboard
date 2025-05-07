@@ -38,8 +38,7 @@ const Feed = () => {
 
   const handleSavePost = async (post) => {
     try {
-      // Instead of sending just the ID, send the entire post data
-      // This will help the backend create the post if it doesn't exist
+      
       await axios.post(`${API_URL}/posts/save`, {
         post: {
           id: post.id,
