@@ -1,8 +1,6 @@
 const Activity = require("../models/Activity");
 
-// @desc    Get recent activity
 // @route   GET /api/activity/recent
-// @access  Private
 exports.getRecentActivity = async (req, res) => {
   try {
     const activities = await Activity.find({ user: req.user._id })
