@@ -3,14 +3,7 @@ const CreditTransaction = require("../models/CreditTransaction");
 const { ApiError } = require("../utils/errorHandler");
 const activityService = require("./activityService");
 
-/**
- * Add credits to user
- * @param {string} userId - User ID
- * @param {number} amount - Amount of credits to add
- * @param {string} reason - Reason for adding credits
- * @param {string} type - Transaction type
- * @returns {Object} Updated credit information
- */
+
 const addCredits = async (userId, amount, reason, type = "interaction") => {
   if (!amount || amount <= 0) {
     throw new ApiError(400, "Invalid credit amount");
@@ -48,12 +41,7 @@ const addCredits = async (userId, amount, reason, type = "interaction") => {
   };
 };
 
-/**
- * Get credit history for user
- * @param {string} userId - User ID
- * @param {number} limit - Maximum number of transactions to return
- * @returns {Array} Credit transactions
- */
+
 const getCreditHistory = async (userId, limit = 30) => {
   const transactions = await CreditTransaction.find({ user: userId })
     .sort({ createdAt: -1 })
@@ -62,11 +50,7 @@ const getCreditHistory = async (userId, limit = 30) => {
   return transactions;
 };
 
-/**
- * Award daily login credit
- * @param {string} userId - User ID
- * @returns {Object} Credit award result
- */
+
 const awardDailyLoginCredit = async (userId) => {
   // Find user
   const user = await User.findById(userId);
