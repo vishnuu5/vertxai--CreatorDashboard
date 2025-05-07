@@ -1,11 +1,6 @@
 import api from "./api";
 
-/**
- * Add credits to user
- * @param {number} amount - Amount of credits to add
- * @param {string} reason - Reason for adding credits
- * @returns {Promise} Promise with result
- */
+
 export const addCredits = async (amount, reason) => {
   try {
     const response = await api.post("/credits/add", { amount, reason });
@@ -15,10 +10,7 @@ export const addCredits = async (amount, reason) => {
   }
 };
 
-/**
- * Get daily login credit
- * @returns {Promise} Promise with result
- */
+
 export const getDailyLoginCredit = async () => {
   try {
     const response = await api.post("/credits/daily-login");
@@ -30,10 +22,7 @@ export const getDailyLoginCredit = async () => {
   }
 };
 
-/**
- * Get credit history
- * @returns {Promise} Promise with credit history
- */
+
 export const getCreditHistory = async () => {
   try {
     const response = await api.get("/credits/history");
