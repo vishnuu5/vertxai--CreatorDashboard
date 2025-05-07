@@ -3,11 +3,7 @@ const { ApiError } = require("../utils/errorHandler");
 const activityService = require("./activityService");
 const creditService = require("./creditService");
 
-/**
- * Get user by ID
- * @param {string} userId - User ID
- * @returns {Object} User object
- */
+
 const getUserById = async (userId) => {
   const user = await User.findById(userId);
 
@@ -18,12 +14,7 @@ const getUserById = async (userId) => {
   return user;
 };
 
-/**
- * Update user profile
- * @param {string} userId - User ID
- * @param {Object} profileData - Updated profile data
- * @returns {Object} Updated user profile
- */
+
 const updateUserProfile = async (userId, profileData) => {
   const { name, bio, location, socialLinks } = profileData;
 
@@ -76,13 +67,7 @@ const updateUserProfile = async (userId, profileData) => {
   };
 };
 
-/**
- * Change user password
- * @param {string} userId - User ID
- * @param {string} currentPassword - Current password
- * @param {string} newPassword - New password
- * @returns {boolean} Success status
- */
+
 const changePassword = async (userId, currentPassword, newPassword) => {
   // Find user
   const user = await User.findById(userId).select("+password");
@@ -104,11 +89,7 @@ const changePassword = async (userId, currentPassword, newPassword) => {
   return true;
 };
 
-/**
- * Delete user account
- * @param {string} userId - User ID
- * @returns {boolean} Success status
- */
+
 const deleteAccount = async (userId) => {
   const result = await User.findByIdAndDelete(userId);
 
