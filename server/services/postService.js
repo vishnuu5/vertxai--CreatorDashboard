@@ -6,14 +6,9 @@ const { ApiError } = require("../utils/errorHandler");
 const activityService = require("./activityService");
 const creditService = require("./creditService");
 
-/**
- * Get Twitter posts
- * @returns {Array} Twitter posts
- */
 const getTwitterPosts = async () => {
   try {
-    // This would normally use the Twitter API
-    // For this assignment, we'll return mock data
+    
     return [
       {
         id: "tweet1",
@@ -38,7 +33,7 @@ const getTwitterPosts = async () => {
         comments: 21,
         createdAt: new Date(),
       },
-      // More would be added in a real app
+     
     ];
   } catch (error) {
     console.error("Twitter API error:", error);
@@ -46,14 +41,9 @@ const getTwitterPosts = async () => {
   }
 };
 
-/**
- * Get Reddit posts
- * @returns {Array} Reddit posts
- */
 const getRedditPosts = async () => {
   try {
-    // This would normally use the Reddit API
-    // For this assignment, we'll return mock data
+   
     return [
       {
         id: "reddit1",
@@ -78,7 +68,7 @@ const getRedditPosts = async () => {
         comments: 214,
         createdAt: new Date(),
       },
-      // More would be added in a real app
+      
     ];
   } catch (error) {
     console.error("Reddit API error:", error);
@@ -86,12 +76,6 @@ const getRedditPosts = async () => {
   }
 };
 
-/**
- * Get feed posts
- * @param {string} userId - User ID
- * @param {string} source - Source filter
- * @returns {Array} Feed posts
- */
 const getFeedPosts = async (userId, source = "all") => {
   // Get posts from different sources
   let twitterPosts = [];
@@ -130,12 +114,6 @@ const getFeedPosts = async (userId, source = "all") => {
   return posts;
 };
 
-/**
- * Save a post
- * @param {string} userId - User ID
- * @param {string} postId - Post ID
- * @returns {Object} Save result
- */
 const savePost = async (userId, postId) => {
   // Check if post exists
   let post = await Post.findById(postId);
@@ -187,11 +165,7 @@ const savePost = async (userId, postId) => {
   return { message: "Post saved successfully" };
 };
 
-/**
- * Get saved posts
- * @param {string} userId - User ID
- * @returns {Array} Saved posts
- */
+
 const getSavedPosts = async (userId) => {
   const savedPosts = await SavedPost.find({ user: userId })
     .populate("post")
@@ -209,12 +183,7 @@ const getSavedPosts = async (userId) => {
   return formattedPosts;
 };
 
-/**
- * Share a post
- * @param {string} userId - User ID
- * @param {string} postId - Post ID
- * @returns {Object} Share result
- */
+
 const sharePost = async (userId, postId) => {
   // Add activity
   await activityService.createActivity(userId, "post_share", {
@@ -233,8 +202,7 @@ const sharePost = async (userId, postId) => {
  * @param {string} postId - Post ID
  * @param {string} reason - Report reason
  * @param {string} description - Report description
- * @returns {Object} Report result
- */
+ 
 const reportPost = async (
   userId,
   postId,
