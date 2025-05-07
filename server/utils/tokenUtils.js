@@ -1,11 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-/**
- * Generate JWT token
- * @param {string} userId - User ID to encode in token
- * @param {Object} options - Token options
- * @returns {string} JWT token
- */
+
 const generateToken = (userId, options = {}) => {
   const secret = process.env.JWT_SECRET || "secret123";
   const expiresIn = options.expiresIn || "30d";
@@ -13,11 +8,7 @@ const generateToken = (userId, options = {}) => {
   return jwt.sign({ id: userId }, secret, { expiresIn });
 };
 
-/**
- * Verify JWT token
- * @param {string} token - Token to verify
- * @returns {Object} Decoded token payload
- */
+
 const verifyToken = (token) => {
   const secret = process.env.JWT_SECRET || "secret123";
 
@@ -28,11 +19,7 @@ const verifyToken = (token) => {
   }
 };
 
-/**
- * Extract token from authorization header
- * @param {string} authHeader - Authorization header
- * @returns {string|null} Extracted token or null
- */
+
 const extractTokenFromHeader = (authHeader) => {
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;
