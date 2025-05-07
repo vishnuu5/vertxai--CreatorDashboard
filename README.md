@@ -2,7 +2,7 @@
 
 A full-stack application for content creators to manage their social media presence, track engagement, and earn credits through platform interactions.
 
-![Creator Dashboard](https://vertxai-creator-dashboard.vercel.app)
+[Creator Dashboard](https://vertxai-creator-dashboard.vercel.app)
 
 ## Features
 
