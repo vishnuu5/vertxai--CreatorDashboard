@@ -1,9 +1,6 @@
 import api from "./api";
 
-/**
- * Get admin dashboard stats
- * @returns {Promise} Promise with admin stats
- */
+
 export const getAdminStats = async () => {
   try {
     const response = await api.get("/admin/stats");
@@ -13,10 +10,7 @@ export const getAdminStats = async () => {
   }
 };
 
-/**
- * Get all users
- * @returns {Promise} Promise with users list
- */
+
 export const getUsers = async () => {
   try {
     const response = await api.get("/admin/users");
@@ -26,13 +20,7 @@ export const getUsers = async () => {
   }
 };
 
-/**
- * Update user credits
- * @param {string} userId - User ID
- * @param {number} amount - Amount of credits to add/remove
- * @param {string} reason - Reason for adjustment
- * @returns {Promise} Promise with result
- */
+
 export const updateUserCredits = async (userId, amount, reason) => {
   try {
     const response = await api.post("/admin/credits", {
@@ -46,10 +34,7 @@ export const updateUserCredits = async (userId, amount, reason) => {
   }
 };
 
-/**
- * Get reported content
- * @returns {Promise} Promise with reported content
- */
+
 export const getReportedContent = async () => {
   try {
     const response = await api.get("/admin/reports");
@@ -59,11 +44,7 @@ export const getReportedContent = async () => {
   }
 };
 
-/**
- * Resolve a report
- * @param {string} reportId - Report ID
- * @returns {Promise} Promise with result
- */
+
 export const resolveReport = async (reportId) => {
   try {
     const response = await api.put(`/admin/reports/${reportId}/resolve`);
