@@ -2,9 +2,7 @@ const User = require("../models/User");
 const Activity = require("../models/Activity");
 const CreditTransaction = require("../models/CreditTransaction");
 
-// @desc    Get current user
 // @route   GET /api/users/me
-// @access  Private
 exports.getCurrentUser = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
@@ -20,9 +18,7 @@ exports.getCurrentUser = async (req, res) => {
   }
 };
 
-// @desc    Get user profile
 // @route   GET /api/users/profile
-// @access  Private
 exports.getUserProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
@@ -48,9 +44,7 @@ exports.getUserProfile = async (req, res) => {
   }
 };
 
-// @desc    Update user profile
 // @route   PUT /api/users/profile
-// @access  Private
 exports.updateProfile = async (req, res) => {
   try {
     const { name, bio, location, socialLinks } = req.body;
