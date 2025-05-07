@@ -3,10 +3,7 @@ const Report = require("../models/Report");
 const { ApiError } = require("../utils/errorHandler");
 const creditService = require("./creditService");
 
-/**
- * Get admin dashboard stats
- * @returns {Object} Admin stats
- */
+
 const getAdminStats = async () => {
   // Get stats
   const userCount = await User.countDocuments();
@@ -24,23 +21,13 @@ const getAdminStats = async () => {
   };
 };
 
-/**
- * Get all users
- * @returns {Array} Users list
- */
+
 const getUsers = async () => {
   const users = await User.find().select("-password").sort({ createdAt: -1 });
   return users;
 };
 
-/**
- * Update user credits
- * @param {string} adminId - Admin user ID
- * @param {string} userId - Target user ID
- * @param {number} amount - Amount of credits to add/remove
- * @param {string} reason - Reason for adjustment
- * @returns {Object} Updated user
- */
+
 const updateUserCredits = async (adminId, userId, amount, reason) => {
   // Validate input
   if (!userId || !amount) {
@@ -73,10 +60,6 @@ const updateUserCredits = async (adminId, userId, amount, reason) => {
   };
 };
 
-/**
- * Get reported content
- * @returns {Array} Reported content
- */
 const getReportedContent = async () => {
   const reports = await Report.find({ status: "pending" })
     .populate("post")
@@ -86,11 +69,6 @@ const getReportedContent = async () => {
   return reports;
 };
 
-/**
- * Resolve a report
- * @param {string} reportId - Report ID
- * @returns {Object} Resolve result
- */
 const resolveReport = async (reportId) => {
   const report = await Report.findById(reportId);
 
