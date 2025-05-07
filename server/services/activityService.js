@@ -1,12 +1,6 @@
 const Activity = require("../models/Activity");
 
-/**
- * Create a new activity record
- * @param {string} userId - User ID
- * @param {string} type - Activity type
- * @param {Object} data - Additional activity data
- * @returns {Object} Created activity
- */
+
 const createActivity = async (userId, type, data = {}) => {
   const activity = await Activity.create({
     user: userId,
@@ -17,12 +11,7 @@ const createActivity = async (userId, type, data = {}) => {
   return activity;
 };
 
-/**
- * Get recent activity for user
- * @param {string} userId - User ID
- * @param {number} limit - Maximum number of activities to return
- * @returns {Array} Recent activities
- */
+
 const getRecentActivity = async (userId, limit = 10) => {
   const activities = await Activity.find({ user: userId })
     .sort({ createdAt: -1 })
