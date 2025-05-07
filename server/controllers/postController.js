@@ -9,8 +9,7 @@ const User = require("../models/User");
 // Helper function to get Twitter data
 const getTwitterPosts = async () => {
   try {
-    // This would normally use the Twitter API
-    // For this assignment, we'll return mock data
+    
     return [
       {
         id: "tweet1",
@@ -35,7 +34,6 @@ const getTwitterPosts = async () => {
         comments: 21,
         createdAt: new Date(),
       },
-      // More would be added in a real app
     ];
   } catch (error) {
     console.error("Twitter API error:", error);
@@ -46,8 +44,7 @@ const getTwitterPosts = async () => {
 // Helper function to get Reddit data
 const getRedditPosts = async () => {
   try {
-    // This would normally use the Reddit API
-    // For this assignment, we'll return mock data
+    
     return [
       {
         id: "reddit1",
@@ -72,7 +69,6 @@ const getRedditPosts = async () => {
         comments: 214,
         createdAt: new Date(),
       },
-      // More would be added in a real app
     ];
   } catch (error) {
     console.error("Reddit API error:", error);
@@ -80,9 +76,7 @@ const getRedditPosts = async () => {
   }
 };
 
-// @desc    Get feed posts
 // @route   GET /api/posts/feed
-// @access  Private
 exports.getFeedPosts = async (req, res) => {
   try {
     const { source } = req.query;
@@ -103,7 +97,6 @@ exports.getFeedPosts = async (req, res) => {
     // Combine posts
     posts = [...twitterPosts, ...redditPosts];
 
-    // Check if any posts are saved by user
     const savedPosts = await SavedPost.find({ user: req.user._id });
     const savedPostIds = savedPosts.map((p) => p.post.toString());
 
@@ -111,8 +104,8 @@ exports.getFeedPosts = async (req, res) => {
     posts = posts.map((post) => {
       return {
         ...post,
-        id: post.id, // Just use the original id
-        saved: false, // Default to not saved
+        id: post.id, 
+        saved: false, 
       };
     });
 
@@ -126,9 +119,7 @@ exports.getFeedPosts = async (req, res) => {
   }
 };
 
-// @desc    Save a post
 // @route   POST /api/posts/save
-// @access  Private
 exports.savePost = async (req, res) => {
   try {
     // Updated to accept full post data
@@ -188,9 +179,7 @@ exports.savePost = async (req, res) => {
   }
 };
 
-// @desc    Get saved posts
 // @route   GET /api/posts/saved
-// @access  Private
 exports.getSavedPosts = async (req, res) => {
   try {
     const savedPosts = await SavedPost.find({ user: req.user._id })
@@ -213,9 +202,7 @@ exports.getSavedPosts = async (req, res) => {
   }
 };
 
-// @desc    Share a post
 // @route   POST /api/posts/share
-// @access  Private
 exports.sharePost = async (req, res) => {
   try {
     // Updated to accept full post data
@@ -255,9 +242,7 @@ exports.sharePost = async (req, res) => {
   }
 };
 
-// @desc    Report a post
 // @route   POST /api/posts/report
-// @access  Private
 exports.reportPost = async (req, res) => {
   try {
     // Updated to accept full post data
