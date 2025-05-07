@@ -114,15 +114,7 @@ const Navbar = ({ toggleSidebar }) => {
                 <div
                   className="absolute right-[-3.5rem]  mt-2 w-80 max-w-xs sm:max-w-sm md:max-w-md
                   rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50"
-                  // style={{
-                  //   right: window.innerWidth < 640 ? "0" : "auto",
-                  //   left: window.innerWidth < 640 ? "50%" : "auto",
-                  //   transform:
-                  //     window.innerWidth < 640 ? "translateX(-50%)" : "none",
-                  //   maxWidth:
-                  //     window.innerWidth < 640 ? "calc(100vw - 2rem)" : "20rem",
-                  // }}
-                >
+                  
                   <div className="py-2">
                     <div className="px-4 py-2 border-b border-gray-100 flex justify-between items-center">
                       <h3 className="text-sm font-medium text-gray-900">
