@@ -1,10 +1,6 @@
 import api from "./api";
 
-/**
- * Get feed posts
- * @param {string} source - Source filter (all, twitter, reddit)
- * @returns {Promise} Promise with feed posts
- */
+
 export const getFeedPosts = async (source = "all") => {
   try {
     const response = await api.get(`/posts/feed?source=${source}`);
@@ -14,11 +10,7 @@ export const getFeedPosts = async (source = "all") => {
   }
 };
 
-/**
- * Save a post
- * @param {string} postId - ID of the post to save
- * @returns {Promise} Promise with result
- */
+
 export const savePost = async (postId) => {
   try {
     const response = await api.post("/posts/save", { postId });
@@ -28,10 +20,7 @@ export const savePost = async (postId) => {
   }
 };
 
-/**
- * Get saved posts
- * @returns {Promise} Promise with saved posts
- */
+
 export const getSavedPosts = async () => {
   try {
     const response = await api.get("/posts/saved");
@@ -41,11 +30,7 @@ export const getSavedPosts = async () => {
   }
 };
 
-/**
- * Share a post
- * @param {Object} post - Post to share
- * @returns {Promise} Promise with result
- */
+
 export const sharePost = async (post) => {
   try {
     const response = await api.post("/posts/share", { postId: post.id });
@@ -55,13 +40,7 @@ export const sharePost = async (post) => {
   }
 };
 
-/**
- * Report a post
- * @param {string} postId - ID of the post to report
- * @param {string} reason - Reason for reporting
- * @param {string} description - Additional description
- * @returns {Promise} Promise with result
- */
+
 export const reportPost = async (
   postId,
   reason = "inappropriate",
