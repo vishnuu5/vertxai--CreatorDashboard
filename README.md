@@ -2,7 +2,7 @@
 
 A full-stack application for content creators to manage their social media presence, track engagement, and earn credits through platform interactions.
 
-![Creator Dashboard](https://picsum.photos/800/400)
+![Creator Dashboard](https://vertxai-creator-dashboard.vercel.app)
 
 ## Features
 
