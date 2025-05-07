@@ -4,11 +4,7 @@ const { isValidEmail, validatePassword } = require("../utils/validators");
 const { generateToken } = require("../utils/tokenUtils");
 const activityService = require("./activityService");
 
-/**
- * Register a new user
- * @param {Object} userData - User registration data
- * @returns {Object} Registered user
- */
+
 const registerUser = async (userData) => {
   const { name, email, password } = userData;
 
@@ -46,12 +42,7 @@ const registerUser = async (userData) => {
   };
 };
 
-/**
- * Authenticate user and generate token
- * @param {string} email - User email
- * @param {string} password - User password
- * @returns {Object} Authentication result with token
- */
+
 const loginUser = async (email, password) => {
   // Validate input
   if (!email || !password) {
