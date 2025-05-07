@@ -1,6 +1,4 @@
-/**
- * Custom error class for API errors
- */
+
 class ApiError extends Error {
   constructor(statusCode, message, isOperational = true, stack = "") {
     super(message);
@@ -14,18 +12,7 @@ class ApiError extends Error {
   }
 }
 
-/**
- * Handle errors in async functions
- * @param {Function} fn - Async function to handle
- * @returns {Function} Express middleware function
- */
-const asyncHandler = (fn) => (req, res, next) => {
-  Promise.resolve(fn(req, res, next)).catch((err) => next(err));
-};
 
-/**
- * Error middleware for Express
- */
 const errorMiddleware = (err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";
