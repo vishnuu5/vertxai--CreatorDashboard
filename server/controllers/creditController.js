@@ -2,9 +2,7 @@ const User = require("../models/User");
 const CreditTransaction = require("../models/CreditTransaction");
 const Activity = require("../models/Activity");
 
-// @desc    Add credits to user
 // @route   POST /api/credits/add
-// @access  Private
 exports.addCredits = async (req, res) => {
   try {
     const { amount, reason } = req.body;
@@ -48,9 +46,8 @@ exports.addCredits = async (req, res) => {
   }
 };
 
-// @desc    Daily login credit
+
 // @route   POST /api/credits/daily-login
-// @access  Private
 exports.dailyLoginCredit = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
@@ -101,9 +98,7 @@ exports.dailyLoginCredit = async (req, res) => {
   }
 };
 
-// @desc    Get credit history
 // @route   GET /api/credits/history
-// @access  Private
 exports.getCreditHistory = async (req, res) => {
   try {
     const transactions = await CreditTransaction.find({ user: req.user._id })
